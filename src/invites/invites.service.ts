@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateInviteInput } from './dto/create-invite.input';
 import { UpdateInviteInput } from './dto/update-invite.input';
 import { PrismaService } from "../prisma.service";
+import { Invite } from "./entities/invite.entity";
 
 @Injectable()
 export class InvitesService {
@@ -9,23 +10,23 @@ export class InvitesService {
   constructor(private prisma: PrismaService) {
   }
 
-  create(createInviteInput: CreateInviteInput) {
+  create(createInviteInput: CreateInviteInput): Promise<Invite> {
     return this.prisma.invite.create({data: createInviteInput});
   }
 
-  findAll() {
-    return `This action returns all invites`;
+  async findAll(): Promise<Invite[]> {
+    return await this.prisma.invite.findMany();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} invite`;
+  async findOne(id: number): Promise<Invite>{
+    return await this.prisma.invite.findUnique({where: {id: id}});
   }
 
-  update(id: number, updateInviteInput: UpdateInviteInput) {
-    return `This action updates a #${id} invite`;
+  async update(id: number, updateInviteInput: UpdateInviteInput): Promise<Invite> {
+    return await this.prisma.invite.update({where: {id: id}, data: updateInviteInput });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} invite`;
+  async remove(id: number): Promise<Invite> {
+     return await this.prisma.invite.delete({where: {id:id}});
   }
 }
