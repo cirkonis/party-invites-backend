@@ -1,0 +1,37 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Invite {
+  id: Int!
+  name: String!
+  secretCode: String!
+  rsvp: Boolean
+}
+
+type Query {
+  invites: [Invite!]!
+  invite(id: Int!): Invite!
+}
+
+type Mutation {
+  createInvite(createInviteInput: CreateInviteInput!): Invite!
+  updateInvite(updateInviteInput: UpdateInviteInput!): Invite!
+  removeInvite(id: Int!): Invite!
+}
+
+input CreateInviteInput {
+  """Example field (placeholder)"""
+  id: Int!
+  name: String!
+  secretCode: String!
+  rsvp: Boolean
+}
+
+input UpdateInviteInput {
+  """Example field (placeholder)"""
+  id: Int!
+  name: String!
+  secretCode: String!
+  rsvp: Boolean
+}
