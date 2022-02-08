@@ -1,11 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { CreateInviteInput } from './dto/create-invite.input';
 import { UpdateInviteInput } from './dto/update-invite.input';
+import { PrismaService } from "../prisma.service";
 
 @Injectable()
 export class InvitesService {
+
+  constructor(private prisma: PrismaService) {
+  }
+
   create(createInviteInput: CreateInviteInput) {
-    return 'This action adds a new invite';
+    return this.prisma.invite.create({data: createInviteInput});
   }
 
   findAll() {
