@@ -5,12 +5,13 @@ import { InvitesModule } from './invites/invites.module';
 import { InvitesService } from "./invites/invites.service";
 import { InvitesResolver } from "./invites/invites.resolver";
 import { GraphQLModule } from "@nestjs/graphql";
+import { PrismaService } from "./prisma.service";
 
 @Module({
   imports: [InvitesModule,
     GraphQLModule.forRoot({ autoSchemaFile: 'src/invites/schema.gql',}),
   ],
   controllers: [AppController],
-  providers: [AppService, InvitesService, InvitesResolver, InvitesModule],
+  providers: [AppService, InvitesService, InvitesResolver, InvitesModule, PrismaService],
 })
 export class AppModule {}

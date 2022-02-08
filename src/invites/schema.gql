@@ -21,17 +21,16 @@ type Mutation {
 }
 
 input CreateInviteInput {
-  """Example field (placeholder)"""
-  id: Int!
   name: String!
   secretCode: String!
   rsvp: Boolean
 }
 
 input UpdateInviteInput {
-  """Example field (placeholder)"""
-  id: Int!
   name: String!
   secretCode: String!
   rsvp: Boolean
+
+  """Example field (placeholder)"""
+  id: Int!
 }
